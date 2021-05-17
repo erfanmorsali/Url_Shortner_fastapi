@@ -60,5 +60,14 @@ class UrlService:
             raise HTTPException(404, detail={"message": "url not found"})
         return url
 
+    def get_url_by_short_link(self, db: Session , short_link : str):
+        url = db.query(Url).filter(Url.short_link == short_link).first()
+        if url is None:
+            raise HTTPException(404, detail={"message": "url not found"})
+        return url
+
+    def remove_url(self,url : Url , db : Session):
+        db.delete(url)
+        db.commit()
 
 url_service = UrlService()
