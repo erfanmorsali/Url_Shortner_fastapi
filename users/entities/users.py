@@ -1,10 +1,12 @@
-from db.session import Base
-from sqlalchemy import Column, Integer, String, Boolean
-from sqlalchemy.orm import relationship
 from typing import TYPE_CHECKING
 
+from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy.orm import relationship
+
+from db.session import Base
+
 if TYPE_CHECKING:
-    from models.urls import Url
+    pass
 
 
 class User(Base):

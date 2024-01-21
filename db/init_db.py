@@ -1,9 +1,8 @@
-import pdb
-
-from models.users import User
-from models.urls import Url
-from db.session import Base, engine
 import secrets
+
+from db.session import Base, engine
+from urls.entities.urls import Url
+from users.entities.users import User
 
 
 def init_db(db):
@@ -16,3 +15,10 @@ def init_db(db):
         db.add(user)
         db.commit()
         db.refresh(user)
+
+    url = db.query(Url).first()
+    if url is None:
+        url = Url(link="www.google.com", short_link="abc")
+        db.add(url)
+        db.commit()
+        db.refresh(url)

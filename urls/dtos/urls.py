@@ -1,11 +1,11 @@
 from pydantic import BaseModel
 
 
-class BaseUrlSchema(BaseModel):
+class BaseUrlDto(BaseModel):
     link: str
 
 
-class UrlInDb(BaseUrlSchema):
+class UrlOut(BaseUrlDto):
     short_link: str = None
     owner_id: int
 

@@ -1,5 +1,8 @@
 from fastapi import APIRouter
-from api.endpoints import urls, users, login
+
+from security.controllers import login
+from urls.controllers import urls
+from users.controllers import users
 
 api_router = APIRouter()
 api_router.include_router(urls.router)
